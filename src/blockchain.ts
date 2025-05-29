@@ -28,7 +28,7 @@ export const validate_hash = <T> (block: Block<T>): boolean => {
 }
 
 export const validate_chain = <T> (previous_block: Block<T>, block: Block<T>) => {
-    return previous_block.hash === block.hash;
+    return previous_block.hash === block.previous_hash;
 }
 
 export const validate_blockchain = <T> (blockchain: Block<T>[]): Validation => {
