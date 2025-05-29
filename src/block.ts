@@ -26,8 +26,8 @@ export const mine_block = <T> (block: Block<T>): string => {
     let hash = calculate_hash(block);
     
     while(!hash.startsWith(target)) {
-        hash = calculate_hash(block);
         block.nonce++;
+        hash = calculate_hash(block);
     }
 
     return hash;
