@@ -1,44 +1,45 @@
-# Typescript Starter
+# 🧱 Simple Blockchain in TypeScript
+This project is a minimal and educational implementation of a blockchain, written in TypeScript. It aims to demonstrate the core concepts behind how a blockchain works — including block creation, hashing, proof of work, and chain validation — in a clear and easy-to-understand way.
 
-[![Actions Status](https://github.com/Xetera/typescript-starter/workflows/CI%20Checks/badge.svg)](https://github.com/xetera/typescript-starter/actions)
+## ✨ Features
+- Immutable chain of blocks
+- SHA-256 hash generation
+- Basic Proof of Work (difficulty-based mining)
+- Automatic block linking via previousHash
+- Chain validation logic to detect tampering
 
-![banner](https://d2eip9sf3oo6c2.cloudfront.net/series/covers/000/000/052/full/EGH_Typescript_Plumbing_banner.png?1463413763)
+## 🚀 Installation
+Clone the repository and run:
+```
+npm install
+npm run build
+npm run start
+```
 
-Starter Node.js project that includes Typescript tooling I end up installing for most of my Node.js repos.
+## 📁 Structure
+```
+.
+├── src/
+│   ├── block.ts        # Block structure and hashing logic
+│   ├── blockchain.ts   # Blockchain logic (add, validate, etc.)
+│   └── index.ts        # Demo and testing script
+```
+- block.ts — Defines the block structure and hashing logic
+- blockchain.ts — Manages the blockchain operations and validation
+- index.ts — Entry point for creating and interacting with the chain
 
-## Installation
+## Example usage
+```ts
+import { create_blockchain, add_block, validate_blockchain } from './blockchain'
 
-1. `git clone https://github.com/xetera/typescript-starter project`
-2. `cd project`
-3. `yarn`
-4. `cp .env.example .env`
+const transactions = create_blockchain("Genesis Block", 4)
 
-## Included tooling
+add_block(transactions, { from: "Alice", to: "Bob", amount: 50 })
+add_block(transactions, { from: "Carlos", to: "Dan", amount: 100 })
 
-- Prettier
-- Eslint
-- Jest
-- Fast Check
-- TS Node
-- Nodemon
-- Docker
-- Github Actions
+console.log(validate_blockchain(chain))
+```
 
-## Dependencies
+## 🔒 Proof of Work
+Each block must generate a hash that begins with a certain number of zeros (defined by difficulty). This simulates the mining process and protects the chain from tampering.
 
-- Dotenv
-- Winston
-
-### Why ~~no~~ yarn
-
-~~I don't think Yarn is relevant in 2019 anymore. I personally believe that the JS community is divided enough in its tooling already and we don't need even more fragmentation. Stick with npm.~~
-
-Yarn allows for using workspaces which is very useful and more flexible than lerna. It's too good to pass up.
-
-### Why no semicolons
-
-Idk I think no semi looks nicer.
-
-### Why no gulp/grunt
-
-It's 2021
