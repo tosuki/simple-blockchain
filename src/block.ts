@@ -10,6 +10,11 @@ export type Block <T> = {
     previous_hash: string
 }
 
+/**
+ * Calculates the hash of a block
+ * @param block The block
+ * @returns the hash
+ */
 export const calculate_hash = <T> (block: Block<T>): string => {
     const input = `${block.index}${block.timestamp}${block.data}${block.previous_hash}${block.nonce}`;
 
@@ -33,6 +38,14 @@ export const mine_block = <T> (block: Block<T>): string => {
     return hash;
 }
 
+/**
+ * 
+ * @param previous_hash The hash of the previous block in the chain
+ * @param data The data that the block will store
+ * @param index The index of the block
+ * @param difficulty How many 0 does its hash need to have to be valid?
+ * @returns a block of type T
+ */
 export const create_block = <T> (previous_hash: string, data: T, index: number, difficulty: number = 4): Block<T> => {
     const block: Block<T> = {
         data,
