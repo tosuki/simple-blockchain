@@ -1,6 +1,8 @@
 import "make-promises-safe"
-import { create_block, Block } from "./block"
+import * as blockchain from "./blockchain"
 
-const my_block: Block<string> = create_block("0", "bloco genesis", 0);
+const transactions = blockchain.create_blockchain(0);// 0 -> genesis block
 
-console.log(my_block);
+blockchain.add_block(transactions, 5000);
+console.log(transactions)//all transactions
+console.log('Is transactions chain valid?', blockchain.validate_blockchain(transactions))
